@@ -1,0 +1,208 @@
+/* ===========================
+   PROFILE PAGE
+=========================== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: var(--surface);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+header h3 {
+  margin: 0;
+  color: var(--primary);
+}
+.profile-container {
+  padding-bottom: 40px;
+  width: min(1200px, 95%);
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+  align-items: start;
+}
+/* ===========================
+   CARD
+=========================== */
+.profile-card {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.profile-card h2 {
+  margin-top: 0;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+/* ===========================
+   HERO
+=========================== */
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#profileAvatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--primary);
+  background: var(--surface2);
+  padding: 8px;
+}
+#displayName {
+  text-align: center;
+  margin: 10px 0 5px;
+  font-size: 30px;
+}
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+/* ===========================
+   BMI
+=========================== */
+.bmi-card {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+}
+.bmi-card h2 {
+  margin: 10px 0;
+  color: white;
+  font-size: 45px;
+}
+.bmi-card small {
+  font-size: 16px;
+}
+/* ===========================
+   FORM
+=========================== */
+label {
+  display: block;
+  margin: 15px 0 6px;
+  font-weight: 600;
+}
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 15px;
+  box-sizing: border-box;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: var(--success);
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: var(--success-hover);
+}
+/* ===========================
+   STATS GRID
+=========================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.stat-box {
+  background: var(--surface2);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-box h3 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--primary);
+}
+.stat-box p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+/* ===========================
+   RECORDS
+=========================== */
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface2);
+  border-radius: 15px;
+  padding: 15px 18px;
+  margin-bottom: 15px;
+}
+.record-item span {
+  font-weight: 600;
+}
+.record-item strong {
+  color: var(--primary);
+}
+/* ===========================
+   ACHIEVEMENTS
+=========================== */
+#recentAchievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.badge {
+  background: var(--surface2);
+  border-radius: 14px;
+  padding: 10px 15px;
+  font-size: 14px;
+}
+.view-all {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+.view-all:hover {
+  text-decoration: underline;
+}
+/* ===========================
+   WEEKLY CHART
+=========================== */
+#weeklyChart {
+  width: 100%;
+  height: 250px;
+}

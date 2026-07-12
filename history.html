@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+
+  <body>
+    <header class="history-header">
+      <button onclick="goBack()" class="back-btn">← Back</button>
+
+      <div class="header-title">
+        <h1>📜 Workout History</h1>
+      </div>
+
+      <div class="header-actions">
+        <button id="clearHistoryBtn" class="icon-btn">🗑️</button>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </header>
+    <main class="history-container">
+      <!-- <button id="clearHistoryBtn" class="danger-btn">🗑 Clear History</button> -->
+      <!-- History cards will be inserted here by history.js -->
+      <div id="historyList" class="history-grid"></div>
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state" style="display: none">
+        <h2>No History Yet</h2>
+        <p>Complete a workout or a run to see it here.</p>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <div id="deleteHistoryModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>🗑 Clear History</h2>
+
+        <p>
+          Are you sure you want to delete your workout history?
+          <br /><br />
+          <strong>This action cannot be undone.</strong>
+        </p>
+
+        <div class="modal-buttons">
+          <button id="confirmDeleteHistory" class="danger-btn">
+            Yes, Delete
+          </button>
+
+          <button id="cancelDeleteHistory" class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <script src="back.js"></script>
+    <script src="navigation.js"></script>
+    <script src="toast.js"></script>
+    <script src="history.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>

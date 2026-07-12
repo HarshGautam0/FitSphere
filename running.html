@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+    <link rel="stylesheet" href="running.css" />
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  </head>
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header class="running-header">
+      <button onclick="goBack()" class="back-btn">← Back</button>
+
+      <div class="header-title">
+        <h1>🏃 Running Tracker</h1>
+      </div>
+
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </header>
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="running-container">
+      <!-- ================= MAP ================= -->
+      <section class="map-section">
+        <div id="map"></div>
+      </section>
+      <!-- ================= TIMER ================= -->
+      <section class="live-card">
+        <div class="time-card">
+          <p>RUN TIME</p>
+          <h1 id="time">00:00:00</h1>
+        </div>
+        <!-- ================= STATS ================= -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>🏃 Distance</span>
+            <h2 id="distance">0.00 km</h2>
+          </div>
+          <div class="stat-card">
+            <span> ⚡ Speed</span>
+            <h2 id="speed">0.0 km/h</h2>
+          </div>
+          <div class="stat-card">
+            <span> 🕒 Pace</span>
+            <h2 id="pace">0:00/km</h2>
+          </div>
+          <div class="stat-card">
+            <span>🔥 Calories</span>
+            <h2 id="calories">0 kcal</h2>
+          </div>
+          <div class="stat-card">
+            <span>👣 Steps</span>
+            <h2 id="steps">0</h2>
+          </div>
+        </div>
+      </section>
+      <!-- ================= CONTROLS ================= -->
+      <section class="button-row">
+        <button id="startRun" class="start-btn">▶ Start</button>
+        <button id="pauseRun" class="pause-btn">⏸ Pause</button>
+        <button id="stopRun" class="stop-btn">■ Stop</button>
+      </section>
+      <!-- ================= RUN SUMMARY ================= -->
+      <section id="runSummary" class="summary-card" hidden>
+        <h2>🏁 Run Completed</h2>
+        <div class="summary-item">
+          <span>Distance</span>
+          <strong id="sDistance">0 km</strong>
+        </div>
+        <div class="summary-item">
+          <span>Time</span>
+          <strong id="sTime">00:00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Pace</span>
+          <strong id="sPace">0:00/km</strong>
+        </div>
+        <div class="summary-item">
+          <span>Speed</span>
+          <strong id="sSpeed">0 km/h</strong>
+        </div>
+        <div class="summary-item">
+          <span>Calories</span>
+          <strong id="sCalories">0 kcal</strong>
+        </div>
+        <button id="saveRun" class="goal-btn">Save Run</button>
+      </section>
+    </main>
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <nav class="bottom-nav">
+      <a href="index.html">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <script src="back.js"></script>
+    <script src="streak.js"></script>
+    <script src="records.js"></script>
+    <script src="navigation.js"></script>
+    <script src="voice.js"></script>
+    <script src="toast.js"></script>
+    <script src="running.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>

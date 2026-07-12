@@ -1,0 +1,199 @@
+/* ==========================================
+    PAGE
+========================================== */
+body {
+  padding-bottom: 40px;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* ==========================================
+   HEADER
+========================================== */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: var(--surface);
+  padding: 18px 30px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-title {
+  flex: 1;
+  text-align: center;
+}
+.page-header h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+.page-header p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.back-btn {
+  width: auto;
+  min-width: 110px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 14px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+.back-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+/* ==========================================
+    PROGRESS
+========================================== */
+.progress-section {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+.progress-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+}
+.progress-card h2 {
+  margin-top: 0;
+  color: var(--primary);
+}
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background: var(--surface2);
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+#overallProgress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #2563eb);
+  transition: 0.5s;
+}
+/* ==========================================
+    CATEGORY
+========================================== */
+.achievement-group {
+  max-width: 1200px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+.achievement-group h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+/* ==========================================
+    GRID
+========================================== */
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+/* ==========================================
+    CARD
+========================================== */
+.achievement-card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.achievement-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.achievement-card h3 {
+  margin: 15px 0 8px;
+  color: var(--text);
+  font-size: 20px;
+}
+.achievement-card p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0;
+}
+/* ==========================================
+    ICON
+========================================== */
+.badge-icon {
+  font-size: 55px;
+}
+/* ==========================================
+    LOCKED
+========================================== */
+.locked {
+  opacity: 0.55;
+  filter: grayscale(100%);
+}
+.locked::after {
+  content: "🔒";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+}
+/* ==========================================
+    UNLOCKED
+========================================== */
+.unlocked {
+  border: 2px solid #22c55e;
+}
+.unlocked::after {
+  content: "✅";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+}
+/* ==========================================
+    DATE
+========================================== */
+.unlock-date {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #16a34a;
+}
+/* ==========================================
+    ANIMATION
+========================================== */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.achievement-card {
+  animation: pop 0.35s ease;
+}
+/* Bottom spacing for bottom navigation */
+body {
+  padding-bottom: 90px;
+}

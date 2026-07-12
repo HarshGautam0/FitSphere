@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="workout.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <header class="workout-header">
+      <button onclick="goBack()" class="back-btn">← Back</button>
+      <div class="header-title">
+        <h1>🏋️ Workout Builder</h1>
+        <p>Create Your Workout</p>
+      </div>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </header>
+    <!-- ===========================
+        BUILDER
+============================ -->
+    <section id="builder" class="workout-container">
+      <div class="workout-grid">
+        <!-- LEFT -->
+        <div>
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchExercise"
+              placeholder="Search Exercise"
+            />
+          </div>
+          <div id="exerciseContainer" class="exercise-grid"></div>
+        </div>
+        <!-- RIGHT -->
+        <aside class="selected-panel">
+          <h2>Selected Workout</h2>
+          <ul id="selectedExercises"></ul>
+          <button id="startWorkout">Start Workout</button>
+        </aside>
+      </div>
+    </section>
+    <!-- ===========================
+        WORKOUT SCREEN
+============================ -->
+    <section id="workoutScreen" style="display: none">
+      <div class="pace-selector">
+        <label>Workout Pace:</label>
+        <select id="paceSelect">
+          <option value="2000">Slow</option>
+          <option value="1500" selected>Normal</option>
+          <option value="1000">Fast</option>
+        </select>
+      </div>
+      <div class="workout-top">
+        <div class="exercise-info">
+          <h1 id="currentExercise">Exercise</h1>
+          <p id="currentSet">Set 1 / 3</p>
+        </div>
+        <div class="exercise-progress">
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="workout-layout">
+        <!-- LEFT COLUMN -->
+        <div class="exercise-column">
+          <img id="exerciseImage" src="" alt="Exercise" />
+        </div>
+        <!-- RIGHT COLUMN -->
+        <div class="counter-column">
+          <div id="counterSection" class="counter-card">
+            <h3>Repetitions</h3>
+            <div id="counterValue">0</div>
+          </div>
+          <div id="timerSection" class="counter-card" style="display: none">
+            <h3>Time Remaining</h3>
+            <div id="timer">00:30</div>
+          </div>
+          <div class="rest-card">
+            <h3>Rest Time</h3>
+            <div id="restTimer">--</div>
+          </div>
+        </div>
+      </div>
+      <div class="workout-controls">
+        <button id="startCurrentWorkout" class="start-btn">▶ Start</button>
+        <button id="pauseWorkout">Pause</button>
+        <button id="nextExercise">Next</button>
+        <button id="finishWorkout">Finish</button>
+      </div>
+    </section>
+    <!-- ===========================
+        START WORKOUT POPUP
+============================ -->
+    <div id="startWorkoutModal" class="modal hidden">
+      <div class="modal-content start-modal">
+        <h2>Ready to Start?</h2>
+        <img id="previewImage" src="" alt="" />
+        <h3 id="previewName">Push Ups</h3>
+        <div class="preview-details">
+          <p id="previewSets"></p>
+          <p id="previewReps"></p>
+          <p id="previewRest"></p>
+        </div>
+        <div class="modal-buttons">
+          <button id="confirmStartWorkout">▶ Start Workout</button>
+          <button id="cancelStartWorkout">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- ===========================
+        REST POPUP
+    ============================ -->
+    <div id="restModal" class="modal hidden">
+      <div class="modal-content rest-modal">
+        <h2 id="restTitle">✔ Set Complete</h2>
+        <img id="nextExerciseImage" src="" alt="" />
+        <h3 id="nextExerciseName">Next Exercise</h3>
+        <p id="nextExerciseInfo">Set 2 of 3</p>
+        <h1 id="restCountdown">30</h1>
+        <p>Starting in...</p>
+        <button id="skipRest">Skip Rest</button>
+      </div>
+    </div>
+    <!-- ===========================
+        SUMMARY
+============================ -->
+    <section id="summary" style="display: none">
+      <h2>Workout Completed</h2>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h3>Exercises</h3>
+          <p id="completedExercises">0</p>
+        </div>
+        <div class="summary-card">
+          <h3>Reps</h3>
+          <p id="completedReps">0</p>
+        </div>
+        <div class="summary-card">
+          <h3>Time</h3>
+          <p id="totalTime">0 min</p>
+        </div>
+      </div>
+    </section>
+    <!-- ===========================
+        CONFIGURATION MODAL
+============================ -->
+    <div id="exerciseModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Configure Exercise</h2>
+        <!-- Sets -->
+        <div class="input-group">
+          <label>Sets</label>
+          <div class="stepper">
+            <button type="button" id="minusSets">-</button>
+            <span id="setsValue">3</span>
+            <button type="button" id="plusSets">+</button>
+          </div>
+        </div>
+        <!-- Repetitions -->
+        <div id="repLabel" class="input-group">
+          <label>Repetitions</label>
+          <div class="stepper">
+            <button type="button" id="minusReps">-</button>
+            <span id="repsValue">10</span>
+            <button type="button" id="plusReps">+</button>
+          </div>
+        </div>
+        <!-- Duration -->
+        <div id="durationLabel" class="input-group" style="display: none">
+          <label>Duration</label>
+          <div class="duration-row">
+            <div class="duration-box">
+              <small>Minutes</small>
+              <div class="stepper">
+                <button type="button" id="minusMin">−</button>
+                <span id="minuteValue">0</span>
+                <button type="button" id="plusMin">+</button>
+              </div>
+            </div>
+            <div class="duration-box">
+              <small>Seconds</small>
+              <div class="stepper">
+                <button type="button" id="minusSec">−</button>
+                <span id="secondValue">30</span>
+                <button type="button" id="plusSec">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="duration-preview">
+            Selected Duration
+            <strong id="durationPreview">0:30</strong>
+          </div>
+        </div>
+        <!-- Rest -->
+        <div class="input-group">
+          <label>Rest Between Sets</label>
+          <select id="modalRest">
+            <option value="15">15 Seconds</option>
+            <option value="30">30 Seconds</option>
+            <option value="45">45 Seconds</option>
+            <option value="60">60 Seconds</option>
+          </select>
+        </div>
+        <div class="modal-buttons">
+          <button id="saveExerciseBtn">Save</button>
+          <button id="closeModalBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <nav class="bottom-nav">
+      <a href="index.html">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <script src="back.js"></script>
+    <script src="navigation.js"></script>
+    <script src="theme.js"></script>
+    <script src="streak.js"></script>
+    <script src="records.js"></script>
+    <script src="voice.js"></script>
+    <script src="toast.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="achievements.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <button onclick="goBack()" class="back-btn">← Back</button>
+
+      <div class="header-title">
+        <h1>🏅 Achievements</h1>
+        <p>Your fitness milestones</p>
+      </div>
+
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </header>
+
+    <!-- =====================================
+OVERALL PROGRESS
+===================================== -->
+
+    <section class="progress-section">
+      <div class="progress-card">
+        <h2>Overall Progress</h2>
+
+        <div class="progress-bar">
+          <div id="overallProgress"></div>
+        </div>
+
+        <p>
+          <span id="unlockedCount">0</span> /
+          <span id="totalAchievements">12</span>
+          Unlocked
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================
+BEGINNER
+===================================== -->
+
+    <section class="achievement-group">
+      <h2>🏅 Beginner</h2>
+
+      <div class="achievement-grid" id="beginnerAchievements"></div>
+    </section>
+
+    <!-- =====================================
+WORKOUT
+===================================== -->
+
+    <section class="achievement-group">
+      <h2>💪 Workout</h2>
+
+      <div class="achievement-grid" id="workoutAchievements"></div>
+    </section>
+
+    <!-- =====================================
+RUNNING
+===================================== -->
+
+    <section class="achievement-group">
+      <h2>🏃 Running</h2>
+
+      <div class="achievement-grid" id="runningAchievements"></div>
+    </section>
+
+    <!-- =====================================
+STREAK
+===================================== -->
+
+    <section class="achievement-group">
+      <h2>🔥 Consistency</h2>
+
+      <div class="achievement-grid" id="streakAchievements"></div>
+    </section>
+
+    <!-- =====================================
+    BOTTOM NAVIGATION
+    ===================================== -->
+
+    <nav class="bottom-nav">
+      <a href="index.html">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <script src="back.js"></script>
+    <script src="theme.js"></script>
+    <script src="navigation.js"></script>
+    <script src="toast.js"></script>
+    <script src="achievementData.js"></script>
+    <script src="achievements.js"></script>
+  </body>
+</html>

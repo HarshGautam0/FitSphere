@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <header>
+      <h1>💪 Fitness App</h1>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </header>
+    <section class="hero">
+      <!-- LEFT SIDE -->
+      <div class="hero-content">
+        <!-- Greeting -->
+        <h3 id="greeting" class="greeting">👋 Welcome</h3>
+        <h2>
+          Train Smarter,<br />
+          Live Healthier.
+        </h2>
+        <p>
+          Build workouts, track your runs and monitor your progress from one
+          place.
+        </p>
+        <button
+          class="primary-btn"
+          onclick="
+            document
+              .querySelector('.stats')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Get Started
+        </button>
+      </div>
+      <!-- RIGHT SIDE -->
+      <div class="hero-right">
+        <div class="dashboard-card">
+          <h3>🔥 Current Streak</h3>
+          <h1 id="currentStreak">0</h1>
+        </div>
+        <div class="dashboard-card">
+          <h3>🏆 Best Streak</h3>
+          <h1 id="bestStreak">0</h1>
+        </div>
+        <div class="quote-card">
+          <h3>💬 Quote of the Day</h3>
+          <p id="dailyQuote"></p>
+        </div>
+      </div>
+    </section>
+    <!-- <section class="quick-actions">
+      <a href="profile.html" class="action-card">
+        <h3>👤 Profile</h3>
+        <p>View & edit your profile</p>
+      </a>
+      <a href="workout.html" class="action-card">
+        <h3>💪 Workout Builder</h3>
+        <p>Create custom workouts.</p>
+      </a>
+      <a href="running.html" class="action-card">
+        <h3>🏃 Running Tracker</h3>
+        <p>GPS tracking and route map.</p>
+      </a>
+      🔥 NEW HISTORY BUTTON
+      <a href="history.html" class="action-card">
+        <h3>📜 Workout History</h3>
+        <p>View your past progress</p>
+      </a> 
+    </section> -->
+    <section class="stats">
+      <div class="stat-card">
+        <h2 id="todayWorkouts">0</h2>
+        <span>Today's Workouts</span>
+      </div>
+      <div class="stat-card">
+        <h2 id="todayDistance">0 km</h2>
+        <span>Today's Distance</span>
+      </div>
+      <div class="stat-card">
+        <h2 id="todayCalories">0</h2>
+        <span>Today's Calories</span>
+      </div>
+    </section>
+    <!-- ======================================
+        ACHIEVEMENTS PREVIEW
+====================================== -->
+    <section class="bottom-dashboard">
+      <a href="achievements.html" class="achievement-home-card">
+        <div class="achievement-left">
+          <h2>🏅 Achievements</h2>
+          <p>
+            <span id="homeUnlocked">0</span> /
+            <span id="homeTotal">0</span>
+            Unlocked
+          </p>
+        </div>
+        <div class="achievement-right">
+          <div class="home-progress">
+            <div id="homeAchievementProgress"></div>
+          </div>
+          <small>Tap to view all →</small>
+        </div>
+      </a>
+      <div class="records-card">
+        <h3>🏆 Personal Records</h3>
+        <div class="record">
+          <span>💪 Best Workout</span>
+          <strong id="bestWorkoutReps">0 reps</strong>
+        </div>
+        <div class="record">
+          <span>🏃 Longest Run</span>
+          <strong id="longestRun">0 km</strong>
+        </div>
+        <div class="record">
+          <span>⚡ Fastest Pace</span>
+          <strong id="fastestPace">--</strong>
+        </div>
+      </div>
+    </section>
+    <!-- NEW BUTTON ROW -->
+    <nav class="bottom-nav">
+      <a href="#">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <script src="records.js"></script>
+    <script src="achievementData.js"></script>
+    <script src="toast.js"></script>
+    <script src="app.js"></script>
+    <script src="theme.js"></script>
+    <script src="navigation.js"></script>
+    <script src="streak.js"></script>
+    <script src="quotes.js"></script>
+  </body>
+</html>

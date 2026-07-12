@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem("fitness-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <title>FitSphere</title>
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="toast.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <header>
+      <h3>👤 Profile</h3>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </header>
+    <div class="profile-container">
+      <!-- ========================= -->
+      <!-- PROFILE HERO -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <div class="avatar-container">
+          <img id="profileAvatar" src="assets/male.png" alt="Avatar" />
+        </div>
+        <h1 id="displayName">Fitness User</h1>
+        <p class="subtitle">Build your strongest version.</p>
+        <div class="bmi-card">
+          <h3>BMI</h3>
+          <h2 id="profileBMI">--</h2>
+          <small id="bmiStatus">Not Calculated</small>
+        </div>
+      </div>
+      <!-- ========================= -->
+      <!-- EDIT PROFILE -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>Edit Profile</h2>
+        <form id="profileForm">
+          <label>Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+          <label>Age</label>
+          <input type="number" id="age" required />
+          <label>Gender</label>
+          <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <label>Weight (kg)</label>
+          <input type="number" id="weight" required />
+          <label>Height (cm)</label>
+          <input type="number" id="height" required />
+          <button type="submit">💾 Save Profile</button>
+        </form>
+      </div>
+      <!-- ========================= -->
+      <!-- FITNESS OVERVIEW -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>🔥 Fitness Overview</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h3 id="profileWorkouts">0</h3>
+            <p>Workouts</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileRuns">0</h3>
+            <p>Runs</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileCalories">0</h3>
+            <p>Calories</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileDistance">0 km</h3>
+            <p>Distance</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileReps">0</h3>
+            <p>Reps</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileTime">0 min</h3>
+            <p>Workout Time</p>
+          </div>
+        </div>
+      </div>
+      <!-- ========================= -->
+      <!-- PERSONAL RECORDS -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>🏆 Personal Records</h2>
+        <div class="record-item">
+          <span>💪 Best Workout</span>
+          <strong id="prReps">0 reps</strong>
+        </div>
+        <div class="record-item">
+          <span>🏃 Longest Run</span>
+          <strong id="prDistance">0 km</strong>
+        </div>
+        <div class="record-item">
+          <span>⚡ Fastest Speed</span>
+          <strong id="prSpeed">0 km/h</strong>
+        </div>
+        <div class="record-item">
+          <span>🔥 Best Pace</span>
+          <strong id="prPace">--</strong>
+        </div>
+      </div>
+      <!-- ========================= -->
+      <!-- STREAK -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>🔥 Workout Streak</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h3 id="profileCurrentStreak">0</h3>
+            <p>Current</p>
+          </div>
+          <div class="stat-box">
+            <h3 id="profileBestStreak">0</h3>
+            <p>Best</p>
+          </div>
+        </div>
+      </div>
+      <!-- ========================= -->
+      <!-- ACHIEVEMENTS -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>🏅 Recent Achievements</h2>
+        <div id="recentAchievements">No achievements yet.</div>
+        <br />
+        <a href="achievements.html" class="view-all">
+          View All Achievements →
+        </a>
+      </div>
+      <!-- ========================= -->
+      <!-- WEEKLY ACTIVITY -->
+      <!-- ========================= -->
+      <div class="profile-card">
+        <h2>📈 Weekly Activity</h2>
+        <canvas id="weeklyChart"></canvas>
+      </div>
+    </div>
+    <nav class="bottom-nav">
+      <a href="index.html">
+        <span>🏠</span>
+        <small>Home</small>
+      </a>
+      <a href="workout.html">
+        <span>💪</span>
+        <small>Workout</small>
+      </a>
+      <a href="running.html">
+        <span>🏃</span>
+        <small>Running</small>
+      </a>
+      <a href="history.html">
+        <span>📜</span>
+        <small>History</small>
+      </a>
+      <a href="profile.html" class="active">
+        <span>👤</span>
+        <small>Profile</small>
+      </a>
+    </nav>
+    <script src="back.js"></script>
+    <script src="records.js"></script>
+    <script src="streak.js"></script>
+    <script src="achievementData.js"></script>
+    <script src="toast.js"></script>
+    <script src="profile.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>
