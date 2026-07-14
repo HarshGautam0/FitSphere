@@ -26,29 +26,21 @@ function deleteHistory(index) {
 /* ================================
         CLEAR HISTORY
 ================================ */
-
 const deleteHistoryModal = document.getElementById("deleteHistoryModal");
-
 if (clearBtn) {
   clearBtn.onclick = () => {
     deleteHistoryModal.classList.remove("hidden");
   };
 }
-
 document.getElementById("cancelDeleteHistory").onclick = () => {
   deleteHistoryModal.classList.add("hidden");
 };
-
 document.getElementById("confirmDeleteHistory").onclick = () => {
   localStorage.removeItem(HISTORY_KEY);
-
   // If you also clear stats, uncomment this
   // localStorage.removeItem(STATS_KEY);
-
   deleteHistoryModal.classList.add("hidden");
-
   renderHistory();
-
   if (typeof showToast === "function") {
     showToast("History cleared successfully 🗑");
   }

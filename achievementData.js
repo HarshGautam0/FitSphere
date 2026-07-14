@@ -123,11 +123,9 @@ function updateHomeAchievementCard() {
   const unlocked = achievements.filter((a) => a.unlocked).length;
   const total = achievements.length;
   const percent = (unlocked / total) * 100;
-
   const unlockedEl = document.getElementById("homeUnlocked");
   const totalEl = document.getElementById("homeTotal");
   const progressEl = document.getElementById("homeAchievementProgress");
-
   if (unlockedEl) unlockedEl.innerText = unlocked;
   if (totalEl) totalEl.innerText = total;
   if (progressEl) progressEl.style.width = percent + "%";

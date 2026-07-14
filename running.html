@@ -20,19 +20,17 @@
   <body>
     <!-- ================= HEADER ================= -->
     <header class="running-header">
-      <button onclick="goBack()" class="back-btn">← Back</button>
-
+      <button onclick="goBack()" class="back-btn" type="button">← Back</button>
       <div class="header-title">
         <h1>🏃 Running Tracker</h1>
       </div>
-
-      <button id="themeToggle" class="theme-btn">🌙</button>
+      <button id="themeToggle" class="theme-btn" type="button">🌙</button>
     </header>
     <!-- ================= MAIN CONTAINER ================= -->
     <main class="running-container">
       <!-- ================= MAP ================= -->
       <section class="map-section">
-        <div id="map"></div>
+        <div id="map" aria-label="Running map"></div>
       </section>
       <!-- ================= TIMER ================= -->
       <section class="live-card">
@@ -66,9 +64,9 @@
       </section>
       <!-- ================= CONTROLS ================= -->
       <section class="button-row">
-        <button id="startRun" class="start-btn">▶ Start</button>
-        <button id="pauseRun" class="pause-btn">⏸ Pause</button>
-        <button id="stopRun" class="stop-btn">■ Stop</button>
+        <button id="startRun" class="start-btn" type="button">▶ Start</button>
+        <button id="pauseRun" class="pause-btn" type="button">⏸ Pause</button>
+        <button id="stopRun" class="stop-btn" type="button">■ Stop</button>
       </section>
       <!-- ================= RUN SUMMARY ================= -->
       <section id="runSummary" class="summary-card" hidden>
@@ -93,7 +91,7 @@
           <span>Calories</span>
           <strong id="sCalories">0 kcal</strong>
         </div>
-        <button id="saveRun" class="goal-btn">Save Run</button>
+        <button id="saveRun" class="goal-btn" type="button">Save Run</button>
       </section>
     </main>
     <!-- ================= SCRIPTS ================= -->
@@ -120,13 +118,13 @@
         <small>Profile</small>
       </a>
     </nav>
-    <script src="back.js"></script>
-    <script src="streak.js"></script>
-    <script src="records.js"></script>
-    <script src="navigation.js"></script>
-    <script src="voice.js"></script>
-    <script src="toast.js"></script>
-    <script src="running.js"></script>
-    <script src="theme.js"></script>
+    <script src="back.js" defer></script>
+    <script src="streak.js" defer></script>
+    <script src="records.js" defer></script>
+    <script src="navigation.js" defer></script>
+    <script src="voice.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script src="running.js" defer></script>
+    <script src="theme.js" defer></script>
   </body>
 </html>

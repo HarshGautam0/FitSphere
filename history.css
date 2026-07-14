@@ -117,7 +117,7 @@ body {
   display: none;
 }
 .delete-entry {
-  margin-top: 15px;
+  margin-top: 20px;
   width: 100%;
   padding: 10px;
   border: none;
@@ -149,10 +149,6 @@ body {
 }
 .history-section p {
   margin: 8px 0;
-}
-.delete-entry {
-  width: 100%;
-  margin-top: 20px;
 }
 .modal {
   position: fixed;

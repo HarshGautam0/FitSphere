@@ -40,7 +40,6 @@ function loadProfile() {
 =========================== */
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
   const profile = {
     name: document.getElementById("name").value,
     age: Number(document.getElementById("age").value),
@@ -48,11 +47,8 @@ form.addEventListener("submit", function (e) {
     weight: Number(document.getElementById("weight").value),
     height: Number(document.getElementById("height").value),
   };
-
   localStorage.setItem("fitnessProfile", JSON.stringify(profile));
-
   loadProfile();
-
   showToast("Profile Updated Successfully.");
 });
 /* ===========================

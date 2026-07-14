@@ -1,13 +1,15 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       if (localStorage.getItem("fitness-theme") === "dark") {
         document.documentElement.classList.add("dark");
       }
     </script>
+
     <title>FitSphere</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="themes.css" />
@@ -15,6 +17,14 @@
     <link rel="stylesheet" href="responsive.css" />
   </head>
   <body>
+    <!-- ===========================
+        SPLASH SCREEN
+    =========================== -->
+    <div id="splashScreen" class="splash-screen">
+      <img src="assets/logo.png" class="splash-logo" alt="FitSphere Logo" />
+      <p class="splash-tagline">Train Smarter, Live Healthier.</p>
+      <h1 class="splash-title">FitSphere</h1>
+    </div>
     <header>
       <h1>💪 Fitness App</h1>
       <button id="themeToggle" class="theme-btn">🌙</button>
@@ -151,13 +161,13 @@
         <small>Profile</small>
       </a>
     </nav>
-    <script src="records.js"></script>
-    <script src="achievementData.js"></script>
-    <script src="toast.js"></script>
-    <script src="app.js"></script>
-    <script src="theme.js"></script>
-    <script src="navigation.js"></script>
-    <script src="streak.js"></script>
-    <script src="quotes.js"></script>
+    <script src="records.js" defer></script>
+    <script src="achievementData.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="theme.js" defer></script>
+    <script src="navigation.js" defer></script>
+    <script src="streak.js" defer></script>
+    <script src="quotes.js" defer></script>
   </body>
 </html>

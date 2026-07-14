@@ -2,9 +2,6 @@
 <html lang="en">
   <head>
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
@@ -20,12 +17,12 @@
   </head>
   <body>
     <header class="workout-header">
-      <button onclick="goBack()" class="back-btn">← Back</button>
-      <div class="header-title">
+      <button onclick="goBack()" class="back-btn" aria-label>← Back</button>
+      <div class="workout-title">
         <h1>🏋️ Workout Builder</h1>
         <p>Create Your Workout</p>
       </div>
-      <button id="themeToggle" class="theme-btn">🌙</button>
+      <button id="themeToggle" class="theme-btn" aria-label>🌙</button>
     </header>
     <!-- ===========================
         BUILDER
@@ -77,7 +74,7 @@
       <div class="workout-layout">
         <!-- LEFT COLUMN -->
         <div class="exercise-column">
-          <img id="exerciseImage" src="" alt="Exercise" />
+          <img id="exerciseImage" loading="lazy" alt="Exercise" />
         </div>
         <!-- RIGHT COLUMN -->
         <div class="counter-column">
@@ -97,9 +94,9 @@
       </div>
       <div class="workout-controls">
         <button id="startCurrentWorkout" class="start-btn">▶ Start</button>
-        <button id="pauseWorkout">Pause</button>
-        <button id="nextExercise">Next</button>
-        <button id="finishWorkout">Finish</button>
+        <button id="pauseWorkout" type="button">Pause</button>
+        <button id="nextExercise" type="button">Next</button>
+        <button id="finishWorkout" type="button">Finish</button>
       </div>
     </section>
     <!-- ===========================
@@ -243,13 +240,13 @@
         <small>Profile</small>
       </a>
     </nav>
-    <script src="back.js"></script>
-    <script src="navigation.js"></script>
-    <script src="theme.js"></script>
-    <script src="streak.js"></script>
-    <script src="records.js"></script>
-    <script src="voice.js"></script>
-    <script src="toast.js"></script>
-    <script src="app.js"></script>
+    <script src="back.js" defer></script>
+    <script src="navigation.js" defer></script>
+    <script src="theme.js" defer></script>
+    <script src="streak.js" defer></script>
+    <script src="records.js" defer></script>
+    <script src="voice.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script src="workout.js" defer></script>
   </body>
 </html>

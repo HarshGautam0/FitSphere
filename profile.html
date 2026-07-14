@@ -25,9 +25,14 @@
       <!-- ========================= -->
       <!-- PROFILE HERO -->
       <!-- ========================= -->
-      <div class="profile-card">
+      <div class="profile-card hero-card">
         <div class="avatar-container">
-          <img id="profileAvatar" src="assets/male.png" alt="Avatar" />
+          <img
+            id="profileAvatar"
+            src="assets/male.png"
+            alt="Avatar"
+            loading="lazy"
+          />
         </div>
         <h1 id="displayName">Fitness User</h1>
         <p class="subtitle">Build your strongest version.</p>
@@ -42,21 +47,21 @@
       <!-- ========================= -->
       <div class="profile-card">
         <h2>Edit Profile</h2>
-        <form id="profileForm">
-          <label>Name</label>
+        <form id="profileForm" autocomplete="name">
+          <label for="name">Name</label>
           <input type="text" id="name" placeholder="Enter your name" required />
-          <label>Age</label>
+          <label for="age">Age</label>
           <input type="number" id="age" required />
-          <label>Gender</label>
+          <label for="gender">Gender</label>
           <select id="gender" required>
             <option value="">Select Gender</option>
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>
           </select>
-          <label>Weight (kg)</label>
+          <label for="weight">Weight (kg)</label>
           <input type="number" id="weight" required />
-          <label>Height (cm)</label>
+          <label for="height">Height (cm)</label>
           <input type="number" id="height" required />
           <button type="submit">💾 Save Profile</button>
         </form>
@@ -172,12 +177,12 @@
         <small>Profile</small>
       </a>
     </nav>
-    <script src="back.js"></script>
-    <script src="records.js"></script>
-    <script src="streak.js"></script>
-    <script src="achievementData.js"></script>
-    <script src="toast.js"></script>
-    <script src="profile.js"></script>
-    <script src="theme.js"></script>
+    <script src="back.js" defer></script>
+    <script src="records.js" defer></script>
+    <script src="streak.js" defer></script>
+    <script src="achievementData.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script src="profile.js" defer></script>
+    <script src="theme.js" defer></script>
   </body>
 </html>

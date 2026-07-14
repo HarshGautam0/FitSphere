@@ -16,18 +16,14 @@
     <link rel="stylesheet" href="toast.css" />
     <link rel="stylesheet" href="responsive.css" />
   </head>
-
   <body>
     <header class="history-header">
       <button onclick="goBack()" class="back-btn">← Back</button>
-
       <div class="header-title">
         <h1>📜 Workout History</h1>
       </div>
-
       <div class="header-actions">
         <button id="clearHistoryBtn" class="icon-btn">🗑️</button>
-
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </header>
@@ -41,7 +37,6 @@
         <p>Complete a workout or a run to see it here.</p>
       </div>
     </main>
-
     <nav class="bottom-nav">
       <a href="index.html">
         <span>🏠</span>
@@ -64,29 +59,31 @@
         <small>Profile</small>
       </a>
     </nav>
-    <div id="deleteHistoryModal" class="modal hidden">
+    <div
+      id="deleteHistoryModal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+    >
       <div class="modal-content">
         <h2>🗑 Clear History</h2>
-
         <p>
           Are you sure you want to delete your workout history?
           <br /><br />
           <strong>This action cannot be undone.</strong>
         </p>
-
         <div class="modal-buttons">
           <button id="confirmDeleteHistory" class="danger-btn">
             Yes, Delete
           </button>
-
           <button id="cancelDeleteHistory" class="cancel-btn">Cancel</button>
         </div>
       </div>
     </div>
-    <script src="back.js"></script>
-    <script src="navigation.js"></script>
-    <script src="toast.js"></script>
-    <script src="history.js"></script>
-    <script src="theme.js"></script>
+    <script src="back.js" defer></script>
+    <script src="navigation.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script src="history.js" defer></script>
+    <script src="theme.js" defer></script>
   </body>
 </html>
