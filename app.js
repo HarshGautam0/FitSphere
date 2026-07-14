@@ -15,11 +15,8 @@ function loadGreeting() {
   if (!profile) return;
   const hour = new Date().getHours();
   let text = "Good Evening";
-  if (hour < 12) {
-    text = "Good Morning";
-  } else if (hour < 17) {
-    text = "Good Afternoon";
-  }
+  if (hour < 12) text = "Good Morning";
+  else if (hour < 17) text = "Good Afternoon";
   greeting.innerHTML = `👋 ${text}, ${profile.name}`;
 }
 // ======================================
@@ -102,3 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => splash.remove(), 500);
   }, 2500);
 });
+// ======================================
+// INITIALIZE
+// ======================================
+updateHomeStats();
+loadGreeting();
