@@ -1,3 +1,9 @@
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* ==========================================
    WORKOUT PAGE
 ========================================== */
@@ -832,4 +838,18 @@
   margin-top: 6px;
   font-size: 34px;
   color: var(--primary);
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 72px;
 }
