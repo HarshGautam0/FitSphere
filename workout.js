@@ -263,10 +263,26 @@ function renderSelected() {
 // ADD EXERCISE
 // ======================================
 function addExercise(ex) {
-  selectedExercises.push(ex);
+  console.log("OBJECT RECEIVED:", ex);
+  // Check if this exercise already exists
+  const existingIndex = selectedExercises.findIndex(
+    (item) => item.id === ex.id,
+  );
+  if (existingIndex !== -1) {
+    console.log("Updating existing exercise...");
+    selectedExercises[existingIndex] = ex;
+  } else {
+    console.log("Adding new exercise...");
+    selectedExercises.push(ex);
+  }
+  console.log("ARRAY BEFORE SAVE:", selectedExercises);
   sessionStorage.setItem(
     "selectedExercises",
     JSON.stringify(selectedExercises),
+  );
+  console.log(
+    "SESSION AFTER SAVE:",
+    sessionStorage.getItem("selectedExercises"),
   );
   renderSelected();
 }
