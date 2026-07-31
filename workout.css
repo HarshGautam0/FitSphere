@@ -1,16 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   overflow-x: hidden;
   width: 100%;
 }
-
 /* ==========================================
    WORKOUT PAGE
 ========================================== */
 .workout-container {
-  width: 95%;
-  max-width: 1400px;
-  margin: 30px auto;
+  width: 100%;
+
+  padding: 15px;
+
+  box-sizing: border-box;
 }
 /* ==========================================
    PAGE HEADER
@@ -20,7 +27,10 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 18px 30px;
+  padding: 18px 15px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   background: var(--surface);
   box-shadow: var(--shadow);
   position: sticky;
@@ -84,8 +94,9 @@ body {
   margin-bottom: 35px;
 }
 .search-box input {
-  width: 96%;
+  width: 100%;
   padding: 18px 25px;
+  box-sizing: border-box;
   border: 1px solid var(--border);
   outline: none;
   border-radius: 16px;
@@ -110,15 +121,27 @@ body {
   gap: 35px;
   align-items: start;
 }
+@media (max-width: 768px) {
+  .workout-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .selected-panel {
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
+}
 /* ==========================================
    EXERCISE GRID
 ========================================== */
 .exercise-grid {
   padding-bottom: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 260px);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 /* ==========================================
    EXERCISE CARD
@@ -455,8 +478,7 @@ body {
   display: none !important;
 }
 .modal-content {
-  background: #1f2937;
-  width: 380px;
+  background: var(--surface);
   border-radius: 20px;
   padding: 20px;
 }
@@ -487,7 +509,7 @@ body {
   padding: 14px;
   margin-bottom: 18px;
   border: 1px solid var(--border);
-  background: var(--surface2);
+  background: var(--surface);
   color: var(--text);
   border-radius: 12px;
   outline: none;
@@ -783,7 +805,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--surface2);
+  background: rgb(255 255 255 / 42%);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 10px 12px;
@@ -844,12 +866,9 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-
   z-index: 9999;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   height: 72px;
 }

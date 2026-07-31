@@ -118,6 +118,10 @@ if (minusSec) {
 // ======================================
 // RESTORE SAVED WORKOUT
 // ======================================
+// const savedExercises = sessionStorage.getItem("selectedExercises");
+// if (savedExercises) {
+//   selectedExercises = JSON.parse(savedExercises);
+// }
 const savedExercises = sessionStorage.getItem("selectedExercises");
 if (savedExercises) {
   selectedExercises = JSON.parse(savedExercises);
@@ -133,24 +137,13 @@ if (paceSelect) {
   });
 }
 // ======================================
-// VOICE
-// ======================================
-function speak(text) {
-  if (!voiceEnabled) return;
-  speechSynthesis.cancel();
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 1;
-  msg.pitch = 1;
-  msg.volume = 1;
-  speechSynthesis.speak(msg);
-}
-// ======================================
 // EXERCISE LIBRARY
 // ======================================
 const exerciseLibrary = [
   {
     id: 1,
-    name: "Push-ups",
+    name: "Push ups",
+    voice: "Pushups",
     type: "counter",
     svg: "assets/pushup.png",
   },
@@ -174,7 +167,8 @@ const exerciseLibrary = [
   },
   {
     id: 5,
-    name: "Pull-ups",
+    name: "Pull ups",
+    voice: "Pullups",
     type: "counter",
     svg: "assets/pullup.png",
   },
@@ -320,6 +314,7 @@ if (saveExerciseBtn) {
     const rest = Number(document.getElementById("modalRest").value);
     addExercise({
       ...selectedExerciseForConfig,
+      voice: selectedExerciseForConfig.voice || selectedExerciseForConfig.name,
       sets: modalSets,
       reps: selectedExerciseForConfig.type === "counter" ? modalReps : 0,
       duration:
@@ -397,7 +392,6 @@ function loadExercise() {
   document.getElementById("currentExercise").innerText = currentWorkout.name;
   document.getElementById("exerciseImage").src = currentWorkout.svg;
   updateProgress();
-  speak(currentWorkout.name);
   startSet();
 }
 // ======================================
@@ -419,8 +413,9 @@ function startSet() {
     counter.style.display = "block";
     timer.style.display = "none";
     document.getElementById("counterValue").innerText = "0";
-    speak("Set " + currentSet);
-    startCounter();
+    speak("Start " + (currentWorkout.voice || currentWorkout.name), () => {
+      startCounter();
+    });
   } else {
     counter.style.display = "none";
     timer.style.display = "block";
@@ -449,16 +444,12 @@ function startCounter() {
     completedReps++;
     completedCalories += 0.4;
     document.getElementById("counterValue").innerText = rep;
-    const remaining = target - rep;
-    if (remaining > 0 && remaining <= 5) {
-      speak(String(remaining));
-    }
+    speak(rep.toString());
     if (rep >= target) {
       clearInterval(autoInterval);
-      speak("Done");
-      setTimeout(() => {
+      speak("Done", () => {
         advanceSet();
-      }, 500);
+      });
     }
   }, pace);
 }
@@ -490,33 +481,26 @@ function startTimer() {
 function advanceSet() {
   clearInterval(autoInterval);
   clearInterval(timerInterval);
-
   // More sets remaining
   if (currentSet < currentWorkout.sets) {
     currentSet++;
-
     showRest(currentWorkout.rest, () => {
       startSet();
     });
-
     return;
   }
-
   // Exercise finished
   exerciseIndex++;
-
   // Workout finished
   if (exerciseIndex >= workoutQueue.length) {
     finishWorkout();
     return;
   }
-
   // Rest before next exercise
   showRest(currentWorkout.rest, () => {
     loadExercise();
   });
 }
-
 // ======================================
 // REST MODAL
 // ======================================
@@ -527,18 +511,14 @@ function showRest(seconds, callback) {
   const image = document.getElementById("nextExerciseImage");
   const name = document.getElementById("nextExerciseName");
   const info = document.getElementById("nextExerciseInfo");
-
   pendingAction = callback;
-
   // ==================================
   // REST BETWEEN SETS
   // ==================================
   if (currentSet <= currentWorkout.sets) {
     title.innerText = "✔ Set Completed";
-
     image.src = currentWorkout.svg;
     name.innerText = currentWorkout.name;
-
     info.innerText = `Next Set ${currentSet} of ${currentWorkout.sets}
 • Rest ${currentWorkout.rest} sec`;
   } else {
@@ -546,87 +526,63 @@ function showRest(seconds, callback) {
     // REST BETWEEN EXERCISES
     // ==================================
     const next = workoutQueue[exerciseIndex];
-
     title.innerText = "✔ Exercise Completed";
-
     image.src = next.svg;
     name.innerText = next.name;
-
     if (next.type === "counter") {
       info.innerText = `${next.sets} Sets • ${next.reps} Reps`;
     } else {
       info.innerText = `${next.sets} Sets • ${next.duration} sec`;
     }
   }
-
   modal.classList.remove("hidden");
-
   let left = seconds;
-
   countdown.innerText = left;
-
   clearInterval(restInterval);
-
   restInterval = setInterval(() => {
     if (isPaused) return;
-
     left--;
-
     countdown.innerText = left;
-
     if (left <= 0) {
       clearInterval(restInterval);
-
       modal.classList.add("hidden");
-
       if (pendingAction) {
         pendingAction();
         pendingAction = null;
       }
     }
   }, 1000);
-
   document.getElementById("skipRest").onclick = () => {
     clearInterval(restInterval);
-
     modal.classList.add("hidden");
-
     if (pendingAction) {
       pendingAction();
       pendingAction = null;
     }
   };
 }
-
 // ======================================
 // PAUSE / RESUME
 // ======================================
 const pauseWorkoutBtn = document.getElementById("pauseWorkout");
-
 if (pauseWorkoutBtn) {
   pauseWorkoutBtn.onclick = () => {
     isPaused = !isPaused;
-
     pauseWorkoutBtn.innerText = isPaused ? "Resume" : "Pause";
   };
 }
-
 // ======================================
 // NEXT EXERCISE
 // ======================================
 const nextExerciseBtn = document.getElementById("nextExercise");
-
 if (nextExerciseBtn) {
   nextExerciseBtn.onclick = () => {
     clearInterval(autoInterval);
     clearInterval(timerInterval);
-
     exerciseIndex++;
-
     loadExercise();
   };
 }
-
 // ======================================
 // FINISH BUTTON
 // ======================================

@@ -110,35 +110,40 @@ body {
 =========================== */
 .bottom-nav {
   position: fixed;
-  left: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  height: 72px;
-  background: var(--surface);
+  max-width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+  background: var(--surface);
   border-top: 1px solid var(--border);
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.12);
+  height: 72px;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 9999;
 }
 .bottom-nav a {
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  color: var(--text-secondary);
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 4px;
-  padding: 10px 0;
-  transition: 0.25s;
+  padding: 0;
+  text-decoration: none;
+  color: var(--text-secondary);
+  box-sizing: border-box;
 }
-.bottom-nav a span {
+.bottom-nav span {
   font-size: 24px;
+  line-height: 1;
 }
-.bottom-nav a small {
-  font-size: 13px;
+.bottom-nav small {
+  font-size: 12px;
+  white-space: nowrap;
 }
 .bottom-nav a:hover {
   color: var(--primary);
