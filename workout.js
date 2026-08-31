@@ -494,33 +494,56 @@ function startTimer() {
 } // ======================================
 // ADVANCE SET / EXERCISE
 // ======================================
+// ======================================
+// ADVANCE SET / EXERCISE
+// ======================================
 function advanceSet() {
   clearInterval(autoInterval);
   clearInterval(timerInterval);
-  // More sets remaining
+  // ==================================
+  // MORE SETS REMAINING
+  // ==================================
   if (currentSet < currentWorkout.sets) {
     currentSet++;
-    showRest(currentWorkout.rest, () => {
-      startSet();
-    });
+    showRest(
+      currentWorkout.rest,
+      () => {
+        startSet();
+      },
+      "set",
+    );
     return;
   }
-  // Exercise finished
+  // ==================================
+  // CURRENT EXERCISE COMPLETED
+  // ==================================
   exerciseIndex++;
-  // Workout finished
+  // ==================================
+  // ENTIRE WORKOUT COMPLETED
+  // ==================================
   if (exerciseIndex >= workoutQueue.length) {
     finishWorkout();
     return;
   }
-  // Rest before next exercise
-  showRest(currentWorkout.rest, () => {
-    loadExercise();
-  });
+  // ==================================
+  // NEXT EXERCISE
+  // ==================================
+  const nextExercise = workoutQueue[exerciseIndex];
+  showRest(
+    currentWorkout.rest,
+    () => {
+      loadExercise();
+    },
+    "exercise",
+  );
 }
 // ======================================
 // REST MODAL
 // ======================================
-function showRest(seconds, callback) {
+// ======================================
+// REST MODAL
+// ======================================
+function showRest(seconds, callback, restType) {
   const modal = document.getElementById("restModal");
   const countdown = document.getElementById("restCountdown");
   const title = document.getElementById("restTitle");
@@ -531,26 +554,48 @@ function showRest(seconds, callback) {
   // ==================================
   // REST BETWEEN SETS
   // ==================================
-  if (currentSet <= currentWorkout.sets) {
+  if (restType === "set") {
     title.innerText = "✔ Set Completed";
     image.src = currentWorkout.svg;
     name.innerText = currentWorkout.name;
-    info.innerText = `Next Set ${currentSet} of ${currentWorkout.sets}
-• Rest ${currentWorkout.rest} sec`;
-  } else {
-    // ==================================
-    // REST BETWEEN EXERCISES
-    // ==================================
-    const next = workoutQueue[exerciseIndex];
-    title.innerText = "✔ Exercise Completed";
-    image.src = next.svg;
-    name.innerText = next.name;
-    if (next.type === "counter") {
-      info.innerText = `${next.sets} Sets • ${next.reps} Reps`;
+    if (currentWorkout.type === "counter") {
+      info.innerText =
+        `Next Set ${currentSet} of ${currentWorkout.sets}\n` +
+        `• Rest ${currentWorkout.rest} sec`;
     } else {
-      info.innerText = `${next.sets} Sets • ${next.duration} sec`;
+      info.innerText =
+        `Next Set ${currentSet} of ${currentWorkout.sets}\n` +
+        `• Rest ${currentWorkout.rest} sec`;
     }
   }
+  // ==================================
+  // REST BEFORE NEXT EXERCISE
+  // ==================================
+  else if (restType === "exercise") {
+    const next = workoutQueue[exerciseIndex];
+    title.innerText = "✔ Exercise Completed";
+    // Show NEXT exercise image
+    image.src = next.svg;
+    // Show NEXT exercise name
+    name.innerText = next.name;
+    // Show NEXT exercise information
+    if (next.type === "counter") {
+      info.innerText =
+        `Next Exercise\n` +
+        `${next.sets} Sets • ${next.reps} Reps\n` +
+        `• Rest ${currentWorkout.rest} sec`;
+    } else {
+      info.innerText =
+        `Next Exercise\n` +
+        `${next.sets} Sets • ${next.duration} sec\n` +
+        `• Rest ${currentWorkout.rest} sec`;
+    }
+    // Voice announcement
+    speak("Next exercise " + (next.voice || next.name));
+  }
+  // ==================================
+  // SHOW MODAL
+  // ==================================
   modal.classList.remove("hidden");
   let left = seconds;
   countdown.innerText = left;
@@ -568,6 +613,9 @@ function showRest(seconds, callback) {
       }
     }
   }, 1000);
+  // ==================================
+  // SKIP REST
+  // ==================================
   document.getElementById("skipRest").onclick = () => {
     clearInterval(restInterval);
     modal.classList.add("hidden");
