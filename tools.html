@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tools - FitSphere</title>
+
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="tools.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="tools-header">
+      <div class="tools-brand">🛠️ <span>Tools</span></div>
+
+      <button class="back-btn" onclick="goBack()">← Back</button>
+    </header>
+
+    <!-- MAIN -->
+    <main class="tools-container">
+      <div class="tools-heading">
+        <h1>Fitness Tools</h1>
+        <p>Simple tools for your everyday needs.</p>
+      </div>
+
+      <!-- TOOL CARDS -->
+      <div class="tools-grid">
+        <!-- STOPWATCH -->
+        <section class="tool-card">
+          <div class="tool-icon">⏱️</div>
+
+          <h2>Stopwatch</h2>
+          <p class="tool-description">
+            Track time freely with a simple stopwatch.
+          </p>
+
+          <div id="stopwatchDisplay" class="time-display">00:00:00</div>
+
+          <div class="tool-buttons">
+            <button id="stopwatchStart" class="primary-btn">Start</button>
+
+            <button id="stopwatchReset" class="secondary-btn">Reset</button>
+          </div>
+        </section>
+
+        <!-- TIMER -->
+        <section class="tool-card">
+          <div class="tool-icon">⏰</div>
+
+          <h2>Timer</h2>
+          <p class="tool-description">Set a countdown for any activity.</p>
+
+          <div class="timer-inputs">
+            <div class="time-input">
+              <button id="timerMinPlus">+</button>
+              <span id="timerMinutes">05</span>
+              <small>MIN</small>
+              <button id="timerMinMinus">−</button>
+            </div>
+
+            <div class="time-separator">:</div>
+
+            <div class="time-input">
+              <button id="timerSecPlus">+</button>
+              <span id="timerSeconds">00</span>
+              <small>SEC</small>
+              <button id="timerSecMinus">−</button>
+            </div>
+          </div>
+
+          <div id="timerDisplay" class="time-display">05:00</div>
+
+          <div class="tool-buttons">
+            <button id="timerStart" class="primary-btn">Start</button>
+
+            <button id="timerReset" class="secondary-btn">Reset</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="tools.js"></script>
+  </body>
+</html>

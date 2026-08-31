@@ -1,0 +1,290 @@
+/* =========================================
+   TOOLS PAGE
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: #ffffff;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.tools-header {
+  height: 66px;
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #1d293d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tools-brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3d82ff;
+}
+
+.back-btn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #ffffff;
+
+  padding: 9px 16px;
+  border-radius: 20px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.tools-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 45px 25px 70px;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.tools-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.tools-heading h1 {
+  margin: 0 0 10px;
+
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.tools-heading p {
+  margin: 0;
+
+  color: #8fa3c2;
+  font-size: 16px;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* =========================================
+   TOOL CARD
+========================================= */
+
+.tool-card {
+  background: #1d293d;
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tool-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.tool-card h2 {
+  margin: 0 0 8px;
+
+  font-size: 25px;
+}
+
+.tool-description {
+  margin: 0 0 25px;
+
+  color: #8fa3c2;
+  font-size: 14px;
+}
+
+/* =========================================
+   TIME DISPLAY
+========================================= */
+
+.time-display {
+  font-size: 55px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #3d82ff;
+
+  margin: 25px 0;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.tool-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tool-buttons button {
+  min-width: 110px;
+
+  padding: 12px 20px;
+
+  border-radius: 25px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  border: none;
+
+  background: #3d82ff;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: transparent;
+  color: #ffffff;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+   TIMER INPUT
+========================================= */
+
+.timer-inputs {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 20px 0;
+}
+
+.time-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.time-input button {
+  width: 35px;
+  height: 28px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #263653;
+  color: #ffffff;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.time-input button:hover {
+  background: #34496d;
+}
+
+.time-input span {
+  font-size: 27px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.time-input small {
+  font-size: 9px;
+  color: #8fa3c2;
+  letter-spacing: 1px;
+}
+
+.time-separator {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .tools-header {
+    padding: 0 18px;
+  }
+
+  .tools-brand {
+    font-size: 20px;
+  }
+
+  .tools-container {
+    padding: 30px 16px 50px;
+  }
+
+  .tools-heading h1 {
+    font-size: 30px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    padding: 25px 18px;
+  }
+
+  .time-display {
+    font-size: 42px;
+  }
+}
